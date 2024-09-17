@@ -1,0 +1,348 @@
+/* ----------------------------------------------
+   Import Fonts
+---------------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
+
+/* ----------------------------------------------
+   CSS Variables
+---------------------------------------------- */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --body-bg: #f8f9fa;
+  --header-bg: #343a40;
+  --font-family-sans-serif: "Nunito", sans-serif;
+  --box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --background-color: #f9f9f9;
+  --border-radius: 8px;
+  --border-rounded: 50%;
+  --border-color: #ccc;
+  --box-shadow-light: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------------------------------------
+   Reset and Base Styles
+---------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-family-sans-serif);
+}
+
+input,
+button,
+textarea,
+select i {
+  font: inherit;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+img,
+video,
+svg {
+  height: auto;
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.flex-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .vertical_line {
+    border-left: 2px solid var(--border-color);
+    height: auto;
+    margin: 0 1rem;
+  }
+}
+
+/* ----------------------------------------------
+   Accessibility
+---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------
+   Layout
+---------------------------------------------- */
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.section_wrapper {
+  width: 100%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .section_wrapper {
+    flex-direction: column;
+  }
+}
+
+/* ----------------------------------------------
+   Header
+---------------------------------------------- */
+header {
+  background: var(--header-bg);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--light-color);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 800px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ----------------------------------------------
+   Form Styles
+---------------------------------------------- */
+form {
+  width: 100%;
+  position: relative;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+form input,
+form select {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+form label {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+}
+
+form button {
+  height: 40px;
+  width: 40px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: var(--border-rounded);
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.expense-form_title {
+  color: var(--primary-color);
+  font-size: 0.8rem !important;
+}
+
+.expense-form_inputs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+@media (max-width: 800px) {
+  .expense-form_inputs {
+    flex-direction: column;
+  }
+}
+
+/* ----------------------------------------------
+   Expense List
+---------------------------------------------- */
+#expense-list {
+  border-radius: var(--border-radius);
+}
+
+/* ----------------------------------------------
+   Expenses Container
+---------------------------------------------- */
+.expenses_container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .expenses_container {
+    max-width: 100%;
+  }
+}
+
+.expenses_container h2,
+.expenses_container p {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.expenses_container ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.expenses_container ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+  font-size: 0.8rem;
+}
+
+.expenses_container ul li button {
+  color: var(--danger-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.expenses_container ul li button:hover {
+  transform: scale(1.1);
+}
+
+/* ----------------------------------------------
+   Summary Container
+---------------------------------------------- */
+.summary_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.summary_container h2 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.summary_container #summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.summary_container #summary p,
+.summary_container #summary h4 {
+  font-size: 1rem;
+}
+
+.summary_container #summary p {
+  color: var(--danger-color);
+  text-align: center;
+  font-weight: 600;
+}
+
+.summary_container #summary h2 {
+  color: var(--danger-color);
+}
+
+.summary_container #summary small {
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.summary_container #summary ul {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  list-style: circle;
+}
+
+.summary_container #summary ul li {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--border-color);
+}
