@@ -87,17 +87,11 @@ function displayExpenses() {
   const fragment = document.createDocumentFragment();
 
   expenses.forEach((expense, index) => {
-    // Format the amount for display
-    const formattedAmount = new Intl.NumberFormat("sv-SE", {
-      style: "currency",
-      currency: "SEK",
-    }).format(expense.amount);
-
     /**
      * Create a list item for each expense.
      */
     const listItem = document.createElement("li");
-    listItem.textContent = `${expense.description} - ${formattedAmount} (${
+    listItem.textContent = `${expense.description} - ${formatAmount(expense.amount)} (${
       expense.category
     }) - ${new Date(expense.date).toLocaleDateString()}`;
 
@@ -137,10 +131,6 @@ function updateSummary() {
    * Calculate the total expenses.
    */
   const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-  const formattedTotal = new Intl.NumberFormat("sv-SE", {
-    style: "currency",
-    currency: "SEK",
-  }).format(total);
 
   /**
    * Calculate totals per category.
@@ -154,17 +144,14 @@ function updateSummary() {
    * Format the category totals.
    */
   for (const category in categories) {
-    categories[category] = new Intl.NumberFormat("sv-SE", {
-      style: "currency",
-      currency: "SEK",
-    }).format(categories[category]);
+    categories[category] = formatAmount(categories[category]);
   }
 
   /**
    * Generate the summary HTML content.
    */
   let summaryHTML = `
-    <p>Total Expenses: ${formattedTotal}</p>
+    <p>Total Expenses: ${formatAmount(total)}</p>
     <small>Expenses by Category:</small>
     <ul>
       ${Object.entries(categories)
@@ -195,4 +182,15 @@ function deleteExpense(index) {
   localStorage.setItem("expenses", JSON.stringify(expenses));
   displayExpenses();
   updateSummary();
+}
+
+/**
+ * Formats amount as currency using the Swedish Krona (SEK) currency code.
+ * @param {number} amount - The amount to format.
+ */
+function formatAmount(amount) {
+  return new Intl.NumberFormat("sv-SE", {
+    style: "currency",
+    currency: "SEK",
+  }).format(amount);
 }
